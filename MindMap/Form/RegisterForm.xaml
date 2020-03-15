@@ -1,0 +1,133 @@
+﻿<UserControl x:Class="MindMap.Form.RegisterForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MindMap.Form"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+	<UserControl.Resources>
+
+		<!--#region TextBlockTitle-->
+		<Style x:Key="TextBlockTitle" TargetType="{x:Type TextBlock}">
+			<Setter Property="FontSize" Value="32"/>
+			<Setter Property="FontWeight" Value="DemiBold"/>
+			<Setter Property="Foreground" Value="#616161"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+			<Setter Property="FontFamily" Value="Nirmala UI"/>
+		</Style>
+		<!--#endregion-->
+
+		<!--#region TextBoxStyle-->
+		<Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
+			<Setter Property="FontFamily" Value="Nirmala UI"/>
+			<Setter Property="FontSize" Value="14"/>
+			<Setter Property="Padding" Value="3"/>
+			<Setter Property="Margin" Value="35 5 35 10"/>
+			<Setter Property="Foreground" Value="#616161"/>
+		</Style>
+		<!--#endregion-->
+
+		<!--#region TextBoxRegisterStyle-->
+		<Style x:Key="TextBoxRegisterStyle" TargetType="{x:Type TextBox}">
+			<Setter Property="FontFamily" Value="Nirmala UI"/>
+			<Setter Property="FontSize" Value="14"/>
+			<Setter Property="Padding" Value="3"/>
+			<Setter Property="Margin" Value="35 5 35 10"/>
+			<Setter Property="Foreground" Value="#616161"/>
+		</Style>
+		<!--#endregion-->
+
+		<!--#region BtnRegisterStyle-->
+		<Style x:Key="BtnRegisterStyle" TargetType="{x:Type Button}">
+			<Setter Property="Content" Value="LOGIN"/>
+			<Setter Property="Background" Value="#37474F"/>
+			<Setter Property="Foreground" Value="#EEEEEE"/>
+			<Setter Property="FontFamily" Value="Nirmala UI"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="FontSize" Value="17"/>
+			<Setter Property="Padding" Value="5"/>
+			<Setter Property="Margin" Value="5 0"/>
+			<Setter Property="Width" Value="135"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Border Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0" Padding="{TemplateBinding Padding}" CornerRadius="3">
+							<ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Style.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Background" Value="#263238"/>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+		<!--#endregion-->
+
+		<!--#region BtnResetRegisterStyle-->
+		<Style x:Key="BtnResetRegisterStyle" TargetType="{x:Type Button}">
+			<Setter Property="Content" Value="LOGIN"/>
+			<Setter Property="Background" Value="#4E342E"/>
+			<Setter Property="Foreground" Value="#EEEEEE"/>
+			<Setter Property="FontFamily" Value="Nirmala UI"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="FontSize" Value="17"/>
+			<Setter Property="Padding" Value="5"/>
+			<Setter Property="Margin" Value="5 0"/>
+			<Setter Property="Width" Value="135"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Border Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0" Padding="{TemplateBinding Padding}" CornerRadius="3">
+							<ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Style.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Background" Value="#3E2723"/>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+		<!--#endregion-->
+
+	</UserControl.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+		</Grid.RowDefinitions>
+
+		<StackPanel Grid.Row="1" HorizontalAlignment="Stretch" Margin="0 10" >
+			<TextBlock Text="REGISTER" Style="{StaticResource TextBlockTitle}"/>
+		</StackPanel>
+		<StackPanel Grid.Row="2">
+			<TextBlock Text="Name :" FontFamily="Nirmala UI" FontSize="14" FontWeight="Medium" Margin="30 0" Foreground="#616161"/>
+			<TextBox x:Name="TxtName" Style="{StaticResource TextBoxStyle}"/>
+		</StackPanel>
+		<StackPanel Grid.Row="3">
+			<TextBlock Text="Email :" FontFamily="Nirmala UI" FontSize="14" FontWeight="Medium" Margin="30 0" Foreground="#616161"/>
+			<TextBox x:Name="TxtEmail" Style="{StaticResource TextBoxStyle}" />
+		</StackPanel>
+		<StackPanel Grid.Row="4" >
+			<TextBlock Text="Username :" FontFamily="Nirmala UI" FontSize="14" FontWeight="Medium" Margin="30 0" Foreground="#616161"/>
+			<TextBox x:Name="TxtRegisterUsername" Style="{StaticResource TextBoxRegisterStyle}" />
+		</StackPanel>
+		<StackPanel Grid.Row="5" >
+			<TextBlock Text="Password :" FontFamily="Nirmala UI" FontSize="14" FontWeight="Medium" Margin="30 0" Foreground="#616161"/>
+			<TextBox x:Name="TxtRegisterPassword" Style="{StaticResource TextBoxRegisterStyle}" />
+		</StackPanel>
+		<StackPanel Grid.Row="6"  Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 0">
+			<Button x:Name="BtnRegister" Content="REGISTER" Style="{StaticResource BtnRegisterStyle}" Click="BtnRegister_Click"/>
+			<Button x:Name="BtnResetRegister" Content="RESET" Style="{StaticResource BtnResetRegisterStyle}"/>
+		</StackPanel>
+	</Grid>
+</UserControl>

@@ -1,0 +1,149 @@
+﻿<UserControl x:Class="MindMap.Form.LoginForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MindMap.Form"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+	<UserControl.Resources>
+
+		<!--#region TextBlockTitle-->
+		<Style x:Key="TextBlockTitle" TargetType="{x:Type TextBlock}">
+			<Setter Property="FontSize" Value="32"/>
+			<Setter Property="FontWeight" Value="DemiBold"/>
+			<Setter Property="Foreground" Value="#616161"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+			<Setter Property="FontFamily" Value="Nirmala UI"/>
+		</Style>
+		<!--#endregion-->
+
+		<!--#region TextBoxLoginStyle-->
+		<Style x:Key="TextBoxLoginStyle" TargetType="{x:Type TextBox}">
+			<Setter Property="FontFamily" Value="Nirmala UI"/>
+			<Setter Property="FontSize" Value="14"/>
+			<Setter Property="Padding" Value="3"/>
+			<Setter Property="Margin" Value="35 5 35 10"/>
+			<Setter Property="Foreground" Value="#616161"/>
+		</Style>
+		<!--#endregion-->
+
+		<!--#region PasswordBoxLoginStyle-->
+		<Style x:Key="PasswordBoxLoginStyle" TargetType="{x:Type PasswordBox}">
+			<Setter Property="FontFamily" Value="Nirmala UI"/>
+			<Setter Property="FontSize" Value="14"/>
+			<Setter Property="Padding" Value="3"/>
+			<Setter Property="Margin" Value="35 5 35 15"/>
+			<Setter Property="Foreground" Value="#616161"/>
+		</Style>
+		<!--#endregion-->
+
+		<!--#region BtnLoginStyle-->
+		<Style x:Key="BtnLoginStyle" TargetType="{x:Type Button}">
+			<Setter Property="Content" Value="LOGIN"/>
+			<Setter Property="Background" Value="#37474F"/>
+			<Setter Property="Foreground" Value="#EEEEEE"/>
+			<Setter Property="FontFamily" Value="Nirmala UI"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="FontSize" Value="17"/>
+			<Setter Property="Padding" Value="3"/>
+			<Setter Property="Margin" Value="35 20 35 15"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Border Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0" Padding="{TemplateBinding Padding}" CornerRadius="3">
+							<ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Style.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Background" Value="#263238"/>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+		<!--#endregion-->
+
+		<!--#region BtnResetLoginStyle-->
+		<Style x:Key="BtnResetLoginStyle" TargetType="{x:Type Button}">
+			<Setter Property="Content" Value="RESET"/>
+			<Setter Property="Background" Value="#4E342E"/>
+			<Setter Property="Foreground" Value="#EEEEEE"/>
+			<Setter Property="FontFamily" Value="Nirmala UI"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="FontSize" Value="17"/>
+			<Setter Property="Padding" Value="3"/>
+			<Setter Property="Margin" Value="35 10"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Border Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0" Padding="{TemplateBinding Padding}" CornerRadius="3">
+							<ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Style.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Background" Value="#3E2723"/>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+		<!--#endregion-->
+		
+		<!--#region BtnAccount-->
+		<Style x:Key="BtnAccount" TargetType="{x:Type Button}">
+			<Setter Property="Content" Value="I don't have an Account!"/>
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="Transparent"/>
+			<Setter Property="FontFamily" Value="Nirmala UI"/>
+			<Setter Property="FontSize" Value="14"/>
+			<Setter Property="Foreground" Value="blue"/>
+			<Setter Property="Cursor" Value="Hand"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+							<ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Style.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Foreground" Value="#0D47A1"/>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+		<!--#endregion-->
+		
+	</UserControl.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+		</Grid.RowDefinitions>
+
+		<StackPanel Grid.Row="0" HorizontalAlignment="Stretch" Margin="0 10">
+			<TextBlock Text="LOGIN" Style="{StaticResource TextBlockTitle}"/>
+		</StackPanel>
+		<StackPanel Grid.Row="1">
+			<TextBlock Text="Username :" FontFamily="Nirmala UI" FontSize="14" FontWeight="Medium" Margin="30 0" Foreground="#616161"/>
+			<TextBox x:Name="TxtUsername" Style="{StaticResource TextBoxLoginStyle}" PreviewKeyDown="TxtUsername_PreviewKeyDown"/>
+		</StackPanel>
+		<StackPanel Grid.Row="2">
+			<TextBlock Text="Password :" FontFamily="Nirmala UI" FontSize="14" FontWeight="Medium" Margin="30 0" Foreground="#616161"/>
+			<PasswordBox x:Name="TxtPassword" Style="{StaticResource PasswordBoxLoginStyle}" PreviewKeyDown="TxtPassword_PreviewKeyDown"/>
+		</StackPanel>
+		<StackPanel Grid.Row="3">
+			<Button x:Name="BtnLogin" Style="{StaticResource BtnLoginStyle}" Click="BtnLogin_Click"/>
+		</StackPanel>
+		<StackPanel Grid.Row="4">
+			<Button x:Name="BtnResetLogin" Style="{StaticResource BtnResetLoginStyle}" Click="BtnResetLogin_Click"/>
+		</StackPanel>
+	</Grid>
+</UserControl>
