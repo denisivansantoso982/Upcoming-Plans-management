@@ -4,9 +4,38 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MindMap.Data"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+			 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" Loaded="UserControl_Loaded">
     <Grid>
-            
-    </Grid>
+		<ListView x:Name="listviewDone" Margin="5" SelectionMode="Extended" IsSynchronizedWithCurrentItem="True"
+				  HorizontalAlignment="Left" VerticalAlignment="Top">
+			<ListView.Background>
+				<LinearGradientBrush>
+					<GradientStop Color="DimGray" Offset="0"/>
+				</LinearGradientBrush>
+			</ListView.Background>
+			<ListView.View>
+				<GridView>
+					<GridViewColumn DisplayMemberBinding="{Binding title}" Header="Title" Width="150"/>
+					<GridViewColumn DisplayMemberBinding="{Binding start_at}" Header="Start At" Width="250"/>
+					<GridViewColumn DisplayMemberBinding="{Binding end_at}" Header="End At" Width="250"/>
+					<GridViewColumn DisplayMemberBinding="{Binding progress}" Header="Progress (%)" Width="105"/>
+					<GridViewColumn DisplayMemberBinding="{Binding created_at}" Header="Created At" Width="250"/>
+					<GridViewColumn  Header="Action" Width="70">
+						<GridViewColumn.CellTemplate>
+							<DataTemplate>
+								<materialDesign:PopupBox Margin="10" PlacementMode="LeftAndAlignMiddles" StaysOpen="False" Foreground="#8F4D29">
+									<StackPanel Width="150">
+										<Button x:Name="BtnDetail" Content="Detail" Click="BtnDetail_Click"/>
+										<Button x:Name="BtnEdit" Content="Edit" Click="BtnEdit_Click"/>
+										<Button x:Name="BtnDelete" Content="Delete" Click="BtnDelete_Click"/>
+									</StackPanel>
+								</materialDesign:PopupBox>
+							</DataTemplate>
+						</GridViewColumn.CellTemplate>
+					</GridViewColumn>
+				</GridView>
+			</ListView.View>
+		</ListView>
+	</Grid>
 </UserControl>

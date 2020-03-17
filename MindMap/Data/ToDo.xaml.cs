@@ -26,7 +26,6 @@ namespace MindMap.Data
     {
         SqlConnection connect = new SqlConnection();
         DataTask dataTask = new DataTask();
-        DataUser dataUser = new DataUser();
 
         string dataSource = "Data Source=DENISIVANSANTOS;Initial Catalog=mind_map;Integrated Security=True";
         //string queryDelete = @"DELETE FROM Task WHERE id_task=@id_task";
@@ -82,6 +81,11 @@ namespace MindMap.Data
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnDetail_Click(object sender, RoutedEventArgs e)
         {
 
         }

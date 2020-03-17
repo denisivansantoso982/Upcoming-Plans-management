@@ -60,6 +60,11 @@ namespace MindMap
         {
             Content.Child = new HomeSearch();
         }
+
+        private void BtnAddTask_Click(object sender, RoutedEventArgs e)
+        {
+            Content.Child = new HomeCreateTask();
+        }
         #endregion
 
         #region Button in Popup Action

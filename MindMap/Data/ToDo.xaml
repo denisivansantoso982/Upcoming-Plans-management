@@ -27,6 +27,7 @@
 							<DataTemplate>
 								<materialDesign:PopupBox Margin="10" PlacementMode="LeftAndAlignMiddles" StaysOpen="False" Foreground="#8F4D29">
 									<StackPanel Width="150">
+										<Button x:Name="BtnDetail" Content="Detail" Click="BtnDetail_Click"/>
 										<Button x:Name="BtnEdit" Content="Edit" Click="BtnEdit_Click"/>
 										<Button x:Name="BtnDelete" Content="Delete" Click="BtnDelete_Click"/>
 									</StackPanel>

@@ -88,6 +88,9 @@
     <Compile Include="Data\Done.xaml.cs">
       <DependentUpon>Done.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\HomeCreateTask.xaml.cs">
+      <DependentUpon>HomeCreateTask.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Data\HomeDashboard.xaml.cs">
       <DependentUpon>HomeDashboard.xaml</DependentUpon>
     </Compile>
@@ -173,6 +176,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Data\Done.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Data\HomeCreateTask.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

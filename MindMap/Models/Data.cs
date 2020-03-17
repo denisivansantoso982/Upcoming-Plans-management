@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace MindMap.Models
 {
+    //public class Preferences
+    //{
+    //    public static DataUser UserAuth { get; set; }
+    //}
+
     public class DataUser
     {
         public static int Id_user { get; set; }
@@ -17,16 +22,16 @@ namespace MindMap.Models
 
     public class DataTask
     {
-        public static int Id_Task { get; set; }
-        public static string Title { get; set; }
-        public static DateTime Created_At { get; set; }
-        public static DateTime Start_At { get; set; }
-        public static DateTime End_At { get; set; }
-        public static int Status { get => DataStatus.Id_Status; }
-        public static int Users { get => DataUser.Id_user; }
-        public static string Description { get; set; }
-        public static DateTime Last_Update { get; set; }
-        public static int Progress { get; set; }
+        public int Id_Task { get; set; }
+        public string Title { get; set; }
+        public DateTime Created_At { get; set; }
+        public DateTime Start_At { get; set; }
+        public DateTime End_At { get; set; }
+        public int Status { get => DataStatus.Id_Status; }
+        public int Users { get => DataUser.Id_user; }
+        public string Description { get; set; }
+        public DateTime Last_Update { get; set; }
+        public int Progress { get; set; }
     }
 
     public class DataStatus 
