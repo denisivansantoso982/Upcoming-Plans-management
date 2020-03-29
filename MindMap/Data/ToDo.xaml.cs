@@ -1,5 +1,6 @@
 ﻿using MindMap.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
@@ -25,10 +26,8 @@ namespace MindMap.Data
     public partial class ToDo : UserControl
     {
         SqlConnection connect = new SqlConnection();
-        DataTask dataTask = new DataTask();
 
         string dataSource = "Data Source=DENISIVANSANTOS;Initial Catalog=mind_map;Integrated Security=True";
-        //string queryDelete = @"DELETE FROM Task WHERE id_task=@id_task";
 
         public ToDo()
         {
@@ -42,28 +41,12 @@ namespace MindMap.Data
                 connect.ConnectionString = dataSource;
                 connect.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT * FROM users INNER JOIN task ON users.id_user = task.users INNER JOIN status ON task.status = status.id_status WHERE id_user="+ DataUser.Id_user +" AND id_status=1", connect);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM users INNER JOIN task ON users.id_user = task.users INNER JOIN status ON task.status = status.id_status INNER JOIN priority ON task.priority = priority.id_priority WHERE id_user="+ DataUser.Id_user +" AND id_status=1", connect);
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                DataSet ds = new DataSet();
-                DataTable dt = new DataTable();
-                ds.Clear();
+                DataTable dt = new DataTable("task");
                 sda.Fill(dt);
 
-                //for(int i = 0; i < dt.Rows.Count;i++ )
-                //{ 
-                //    DataTask.Id_Task = Convert.ToInt32(dt.Rows[i]["id_task"].ToString());
-                //    DataTask.Title = dt.Rows[i]["title"].ToString();
-                //    DataStatus.Id_Status = Convert.ToInt32(dt.Rows[i]["status"].ToString());
-                //    DataTask.Created_At = DateTime.Parse(dt.Rows[i]["created_at"].ToString());
-                //    DataTask.Start_At = DateTime.Parse(dt.Rows[i]["start_at"].ToString());
-                //    DataTask.End_At = DateTime.Parse(dt.Rows[i]["end_at"].ToString());
-                //    DataTask.Progress = Convert.ToInt32(dt.Rows[i]["progress"].ToString());
-                //    DataUser.Id_user = Convert.ToInt32(dt.Rows[i]["users"].ToString());
-                //    DataTask.Last_Update = DateTime.Parse(dt.Rows[i]["last_update"].ToString());
-                //}
-                
-                listviewTodo.ItemsSource = dt.DefaultView;
-
+                dataGridTodo.ItemsSource = dt.DefaultView;
             }
             catch ( Exception ex )
             {
@@ -75,6 +58,7 @@ namespace MindMap.Data
             }
         }
 
+        #region Button in Popup every Row
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
 
@@ -82,12 +66,24 @@ namespace MindMap.Data
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
+            DataRowView rowId = (DataRowView) dataGridTodo.SelectedItems[0];
 
+            SqlConnection connect = new SqlConnection(dataSource);
+            SqlCommand cmd = new SqlCommand("DELETE FROM task WHERE id_task = @id_task", connect);
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@id_task", rowId["id_task"]);
+
+            connect.Open();
+            cmd.ExecuteNonQuery();
+            connect.Close();
+
+            UserControl_Loaded(sender, e);
         }
 
         private void BtnDetail_Click(object sender, RoutedEventArgs e)
         {
 
         }
+        #endregion
     }
 }

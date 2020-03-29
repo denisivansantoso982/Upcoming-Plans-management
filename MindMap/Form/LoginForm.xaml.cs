@@ -25,24 +25,6 @@ namespace MindMap.Form
             TxtUsername.Focus();
         }
 
-        #region Methods
-        private bool ValidationLogin()
-        {
-            if ( TxtUsername.Text == string.Empty )
-            {
-                MessageBox.Show("Please Fill Username!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-            else if ( TxtPassword.Password == string.Empty )
-            {
-                MessageBox.Show("Please Fill Password!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-
-            return true;
-        }
-        #endregion
-
         #region Login Action
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -120,5 +102,22 @@ namespace MindMap.Form
         }
         #endregion
 
+        #region Methods
+        private bool ValidationLogin()
+        {
+            if ( TxtUsername.Text == string.Empty )
+            {
+                MessageBox.Show("Please Fill Username!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if ( TxtPassword.Password == string.Empty )
+            {
+                MessageBox.Show("Please Fill Password!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            return true;
+        }
+        #endregion
     }
 }

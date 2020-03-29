@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MindMap.Models
 {
-    //public class Preferences
-    //{
-    //    public static DataUser UserAuth { get; set; }
-    //}
+
+    // Mapping Class
+    [AttributeUsage(AttributeTargets.Property, Inherited =true)]
+    [Serializable]
+    public class MappingAttribute : Attribute
+    {
+        public string ColumnName = null;
+    }
 
     public class DataUser
     {
@@ -37,7 +43,13 @@ namespace MindMap.Models
     public class DataStatus 
     { 
         public static int Id_Status { get; set; }
-        public string Task_Status { get; set; }
+        public static string Task_Status { get; set; }
+    }
+
+    public class DataPriority
+    {
+        public static int Id_Priority { get;  set; }
+        public static string Task_Priority { get;  set; }
     }
 
 }

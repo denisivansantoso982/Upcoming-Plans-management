@@ -65,13 +65,13 @@
 		<!--#endregion-->
 
 		<!--#region Drawer -->
-		<Grid x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="#37474F" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+		<Grid x:Name="GridMenu" Width="250" HorizontalAlignment="Left" Background="#37474F" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
 			<StackPanel>
 				<Grid Height="150" Background="White">
-					<Button x:Name="btnCloseMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Collapsed" Click="btnCloseMenu_Click">
+					<Button x:Name="btnCloseMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Click="btnCloseMenu_Click">
 						<materialDesign:PackIcon Foreground="#263238" Kind="ArrowLeft" Width="25" Height="25"/>
 					</Button>
-					<Button x:Name="btnOpenMenu" Width="70" Height="70" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Click="btnOpenMenu_Click">
+					<Button x:Name="btnOpenMenu" Width="70" Height="70" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Collapsed" Click="btnOpenMenu_Click">
 						<materialDesign:PackIcon Foreground="#263238" Kind="Menu" Width="30" Height="30"/>
 					</Button>
 				</Grid>

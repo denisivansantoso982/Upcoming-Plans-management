@@ -1,21 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
-using MindMap;
 
 namespace MindMap.Form
 {
@@ -124,13 +112,13 @@ namespace MindMap.Form
             }
             else if ( TxtRegisterUsername.Text == string.Empty )
             {
-                MessageBox.Show("Please Fill Username", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Please Fill Username!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 TxtRegisterUsername.Focus();
                 return false;
             }
             else if ( TxtRegisterPassword.Text == string.Empty )
             {
-                MessageBox.Show("Please Fill Password", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Please Fill Password!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 TxtRegisterPassword.Focus();
                 return false;
             }

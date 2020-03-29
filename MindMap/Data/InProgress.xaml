@@ -7,35 +7,33 @@
 			 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" Loaded="UserControl_Loaded">
     <Grid>
-		<ListView x:Name="listviewInProgress" Margin="5" SelectionMode="Extended" IsSynchronizedWithCurrentItem="True"
-				  HorizontalAlignment="Left" VerticalAlignment="Top">
-			<ListView.Background>
+		<DataGrid x:Name="dataGridInProgress" Margin="5" SelectionMode="Extended" HorizontalAlignment="Left" VerticalAlignment="Top" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True">
+			<DataGrid.Background>
 				<LinearGradientBrush>
-					<GradientStop Color="DimGray" Offset="0"/>
+					<GradientStop Color="White" Offset="0"/>
 				</LinearGradientBrush>
-			</ListView.Background>
-			<ListView.View>
-				<GridView>
-					<GridViewColumn DisplayMemberBinding="{Binding title}" Header="Title" Width="150"/>
-					<GridViewColumn DisplayMemberBinding="{Binding start_at}" Header="Start At" Width="250"/>
-					<GridViewColumn DisplayMemberBinding="{Binding end_at}" Header="End At" Width="250"/>
-					<GridViewColumn DisplayMemberBinding="{Binding progress}" Header="Progress (%)" Width="105"/>
-					<GridViewColumn DisplayMemberBinding="{Binding created_at}" Header="Created At" Width="250"/>
-					<GridViewColumn  Header="Action" Width="70">
-						<GridViewColumn.CellTemplate>
-							<DataTemplate>
-								<materialDesign:PopupBox Margin="10" PlacementMode="LeftAndAlignMiddles" StaysOpen="False" Foreground="#8F4D29">
-									<StackPanel Width="150">
-										<Button x:Name="BtnDetail" Content="Detail" Click="BtnDetail_Click"/>
-										<Button x:Name="BtnEdit" Content="Edit" Click="BtnEdit_Click"/>
-										<Button x:Name="BtnDelete" Content="Delete" Click="BtnDelete_Click"/>
-									</StackPanel>
-								</materialDesign:PopupBox>
-							</DataTemplate>
-						</GridViewColumn.CellTemplate>
-					</GridViewColumn>
-				</GridView>
-			</ListView.View>
-		</ListView>
+			</DataGrid.Background>
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="ID" Width="50" Visibility="Collapsed" Binding="{Binding id_task}"/>
+				<DataGridTextColumn Header="Title" Width="*" Binding="{Binding title}"/>
+				<DataGridTextColumn Header="Start At" Width="230" Binding="{Binding start_at}"/>
+				<DataGridTextColumn Header="End At" Width="230" Binding="{Binding end_at}"/>
+				<DataGridTextColumn Header="Priority" Width="150" Binding="{Binding task_priority}"/>
+				<DataGridTextColumn Header="Created At" Width="250" Binding="{Binding created_at}"/>
+				<DataGridTemplateColumn Header="Action">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<materialDesign:PopupBox Margin="10" PlacementMode="LeftAndAlignMiddles" StaysOpen="False" Foreground="#8F4D29">
+								<StackPanel Width="150">
+									<Button x:Name="BtnDetail" Content="Detail" Click="BtnDetail_Click"/>
+									<Button x:Name="BtnEdit" Content="Edit" Click="BtnEdit_Click"/>
+									<Button x:Name="BtnDelete" Content="Delete" Click="BtnDelete_Click"/>
+								</StackPanel>
+							</materialDesign:PopupBox>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+			</DataGrid.Columns>
+		</DataGrid>
 	</Grid>
 </UserControl>
