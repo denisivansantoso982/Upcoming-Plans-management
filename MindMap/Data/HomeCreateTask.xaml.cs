@@ -106,7 +106,7 @@ namespace MindMap.Data
                 DateStart.Focus();
                 return false;
             }
-            else if ( DateEnd.Text == null )
+            else if ( DateEnd.SelectedDate == null )
             {
                 ErrorEnd.Text = "Select End Date!";
                 ErrorEnd.Visibility = Visibility.Visible;
@@ -116,30 +116,117 @@ namespace MindMap.Data
 
             return true;
         }
-        #endregion
 
-        private void ComboStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ResetForm()
         {
-            
+            TxtTitle.Text = "";
+            string.IsNullOrEmpty(ComboStatus.Text);
+            ComboStatus.SelectedValuePath = null;
+            string.IsNullOrEmpty(ComboPriority.Text);
+            ComboPriority.SelectedValuePath = null;
+            DateStart.SelectedDate = null;
+            DateEnd.SelectedDate = null;
+            TxtDescription.Text = "";
+
         }
+        #endregion
 
         #region Button Action
         private void BtnAddTask_Click(object sender, RoutedEventArgs e)
         {
+            int cmbs = ComboStatus.SelectedIndex;
+            int resultStatus = cmbs + 1;
+            int cmbp = ComboPriority.SelectedIndex;
+            int resultPriority = cmbp + 1;
+
             if ( Validation() )
             {
                 try
                 {
-                    using (SqlConnection connection = new SqlConnection(dataSource) )
-                    {
+                    SqlConnection connect = new SqlConnection(dataSource);
+                    connect.Open();
 
+                    SqlCommand cmd = new SqlCommand("INSERT INTO task VALUES (@title, @status, @start_at, @end_at, @description, @created_at, @users, @priority, null)", connect);
+                    cmd.CommandType = CommandType.Text;
+                    if ( string.IsNullOrEmpty(TxtTitle.Text) )
+                    {
+                        cmd.Parameters.AddWithValue("@title", DBNull.Value);
                     }
+                    else
+                        cmd.Parameters.AddWithValue("@title", TxtTitle.Text);
+                    if ( string.IsNullOrEmpty(ComboStatus.Text) )
+                    {
+                        cmd.Parameters.AddWithValue("@status", DBNull.Value);
+                    }
+                    else
+                        cmd.Parameters.AddWithValue("@status", SqlDbType.Int).Value = resultStatus;
+                    if ( DateStart.SelectedDate == null )
+                    {
+                        cmd.Parameters.AddWithValue("@start_at", DBNull.Value);
+                    }
+                    else
+                        cmd.Parameters.AddWithValue("@start_at", DateStart.SelectedDate.Value.ToString());
+                    if ( DateEnd.SelectedDate == null )
+                    {
+                        cmd.Parameters.AddWithValue("@end_at", DBNull.Value);
+                    }
+                    else
+                        cmd.Parameters.AddWithValue("@end_at", DateEnd.SelectedDate.Value.ToString());
+                     if ( string.IsNullOrEmpty(TxtDescription.Text) )
+                    {
+                        cmd.Parameters.AddWithValue("@description", DBNull.Value);
+                    }
+                    else
+                        cmd.Parameters.AddWithValue("@description", TxtDescription.Text);
+
+                    cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@users", DataUser.Id_user);
+                    if ( string.IsNullOrEmpty(ComboPriority.Text) )
+                    {
+                        cmd.Parameters.AddWithValue("@priority", DBNull.Value);
+                    }
+                    else
+                        cmd.Parameters.AddWithValue("@priority", SqlDbType.Int).Value = resultPriority;
+
+                    cmd.ExecuteNonQuery();
+                    connect.Close();
+
+                    MessageBox.Show("Create task success!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    ResetForm();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+        #endregion
+
+        #region Validation Character
+        private void TxtTitle_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            ErrorTitle.Visibility = Visibility.Collapsed;
+        }
+
+        private void ComboStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ErrorStatus.Visibility = Visibility.Collapsed;
+        }
+
+        private void ComboPriority_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ErrorPriority.Visibility = Visibility.Collapsed;
+        }
+
+        private void DateStart_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ErrorStart.Visibility = Visibility.Collapsed;
+        }
+
+        private void DateEnd_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ErrorEnd.Visibility = Visibility.Collapsed;
         }
         #endregion
     }

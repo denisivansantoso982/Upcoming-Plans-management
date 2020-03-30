@@ -104,7 +104,7 @@
 						<Button x:Name="BtnAddTask" Background="{x:Null}" Padding="0" BorderBrush="{x:Null}" Height="60" Click="BtnAddTask_Click">
 							<StackPanel Orientation="Horizontal">
 								<materialDesign:PackIcon Foreground="White" Kind="AddNetwork" Width="35" Height="35" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Left"/>
-								<TextBlock Text="Create Tasks" Width="155" VerticalAlignment="Center" FontFamily="Nirmala UI" Margin="20 10" Foreground="White" FontSize="18"/>
+								<TextBlock Text="Create Task" Width="155" VerticalAlignment="Center" FontFamily="Nirmala UI" Margin="20 10" Foreground="White" FontSize="18"/>
 							</StackPanel>
 						</Button>
 					</ListViewItem>

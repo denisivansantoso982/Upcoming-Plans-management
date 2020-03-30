@@ -17,10 +17,10 @@
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="ID" Width="50" Visibility="Collapsed" Binding="{Binding id_task}"/>
 				<DataGridTextColumn Header="Title" Width="*" Binding="{Binding title}"/>
-				<DataGridTextColumn Header="Start At" Width="230" Binding="{Binding start_at}"/>
-				<DataGridTextColumn Header="End At" Width="230" Binding="{Binding end_at}"/>
-				<DataGridTextColumn Header="Priority" Width="150" Binding="{Binding task_priority}"/>
-				<DataGridTextColumn Header="Created At" Width="250" Binding="{Binding created_at}"/>
+				<DataGridTextColumn Header="Start At" Width="225" Binding="{Binding start_at}"/>
+				<DataGridTextColumn Header="End At" Width="225" Binding="{Binding end_at}"/>
+				<DataGridTextColumn Header="Priority" Width="120" Binding="{Binding task_priority}"/>
+				<DataGridTextColumn Header="Created At" Width="225" Binding="{Binding created_at}"/>
 				<DataGridTemplateColumn Header="Action">
 					<DataGridTemplateColumn.CellTemplate>
 						<DataTemplate>
