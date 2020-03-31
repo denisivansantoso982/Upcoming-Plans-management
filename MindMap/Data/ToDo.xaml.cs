@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MindMap.Data.DetailUpdate;
 
 namespace MindMap.Data
 {
@@ -32,21 +33,26 @@ namespace MindMap.Data
         public ToDo()
         {
             InitializeComponent();
+            LoadData();
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        #region Methods
+        private void LoadData()
         {
             try
             {
                 connect.ConnectionString = dataSource;
                 connect.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT * FROM users INNER JOIN task ON users.id_user = task.users INNER JOIN status ON task.status = status.id_status INNER JOIN priority ON task.priority = priority.id_priority WHERE id_user="+ DataUser.Id_user +" AND id_status=1", connect);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM users INNER JOIN task ON users.id_user = task.users INNER JOIN status ON task.status = status.id_status INNER JOIN priority ON task.priority = priority.id_priority WHERE id_user="+ DataUser.Id_user +" AND id_status = 1", connect);
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable("task");
                 sda.Fill(dt);
 
                 dataGridTodo.ItemsSource = dt.DefaultView;
+
+                string dataCount = dataGridTodo.Items.Count.ToString();
+                DataCount.Text = string.Concat("Total ", dataCount, " Rows");
             }
             catch ( Exception ex )
             {
@@ -57,32 +63,40 @@ namespace MindMap.Data
                 connect.Close();
             }
         }
+        #endregion
 
         #region Button in Popup every Row
+        private void BtnDetail_Click(object sender, RoutedEventArgs e)
+        {
+            DataRowView rowId = (DataRowView) dataGridTodo.SelectedItems[0];
+            var Id = rowId["id_task"];
+
+            DataTask.Id_Task = Convert.ToInt32(Id);
+        }
+
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
+            DataRowView rowId = (DataRowView) dataGridTodo.SelectedItems[0];
+            var Id = rowId["id_task"];
 
+            DataTask.Id_Task = Convert.ToInt32(Id);
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
             DataRowView rowId = (DataRowView) dataGridTodo.SelectedItems[0];
+            var Id = rowId["id_task"];
 
             SqlConnection connect = new SqlConnection(dataSource);
             SqlCommand cmd = new SqlCommand("DELETE FROM task WHERE id_task = @id_task", connect);
             cmd.CommandType = CommandType.Text;
-            cmd.Parameters.AddWithValue("@id_task", rowId["id_task"]);
+            cmd.Parameters.AddWithValue("@id_task", Id);
 
             connect.Open();
             cmd.ExecuteNonQuery();
             connect.Close();
 
-            UserControl_Loaded(sender, e);
-        }
-
-        private void BtnDetail_Click(object sender, RoutedEventArgs e)
-        {
-
+            LoadData();
         }
         #endregion
     }

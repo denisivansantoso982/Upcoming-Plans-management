@@ -48,7 +48,7 @@ namespace MindMap
 
         private void BtnDashboard_Click(object sender, RoutedEventArgs e)
         {
-            Content.Child=new HomeDashboard();
+            Content.Child = new HomeDashboard();
         }
 
         private void BtnSubTask_Click(object sender, RoutedEventArgs e)

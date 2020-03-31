@@ -85,6 +85,12 @@
     <Compile Include="Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\DetailUpdate\DetailTask.xaml.cs">
+      <DependentUpon>DetailTask.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DetailUpdate\UpdateTask.xaml.cs">
+      <DependentUpon>UpdateTask.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Data\Done.xaml.cs">
       <DependentUpon>Done.xaml</DependentUpon>
     </Compile>
@@ -175,6 +181,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Data\DetailUpdate\DetailTask.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Data\DetailUpdate\UpdateTask.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Data\Done.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -241,9 +255,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DashboardMenu\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\left_arrow_black.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

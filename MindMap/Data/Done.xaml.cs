@@ -30,9 +30,11 @@ namespace MindMap.Data
         public Done()
         {
             InitializeComponent();
+            LoadData();
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        #region Methods
+        private void LoadData()
         {
             try
             {
@@ -48,6 +50,8 @@ namespace MindMap.Data
 
                 dataGridDone.ItemsSource = dt.DefaultView;
 
+                string dataCount = dataGridDone.Items.Count.ToString();
+                DataCount.Text = string.Concat("Total ", dataCount, " Rows");
             }
             catch ( Exception ex )
             {
@@ -58,11 +62,23 @@ namespace MindMap.Data
                 connect.Close();
             }
         }
+        #endregion
 
         #region Button in Popup every Row
+        private void BtnDetail_Click(object sender, RoutedEventArgs e)
+        {
+            DataRowView rowId = (DataRowView) dataGridDone.SelectedItems[0];
+            var Id = rowId["id_task"];
+
+            DataTask.Id_Task = Convert.ToInt32(Id);
+        }
+
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
+            DataRowView rowId = (DataRowView) dataGridDone.SelectedItems[0];
+            var Id = rowId["id_task"];
 
+            DataTask.Id_Task = Convert.ToInt32(Id);
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
@@ -78,12 +94,7 @@ namespace MindMap.Data
             cmd.ExecuteNonQuery();
             connect.Close();
 
-            UserControl_Loaded(sender, e);
-        }
-
-        private void BtnDetail_Click(object sender, RoutedEventArgs e)
-        {
-
+            LoadData();
         }
         #endregion
     }
