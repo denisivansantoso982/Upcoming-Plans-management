@@ -5,8 +5,54 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MindMap.Data.DetailUpdate"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="600" d:DesignWidth="800">
+	<Grid Background="White">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+
+		<StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 10">
+			<TextBlock Text="Edit Task" FontSize="26" FontFamily="Nirmala UI" FontWeight="DemiBold"/>
+		</StackPanel>
+		<StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="15 10 15 10">
+			<TextBlock Text="Title" FontSize="20" FontFamily="Nirmala UI" Foreground="#212121"/>
+			<TextBox x:Name="TxtTitle" Padding="2" FontSize="18" FontFamily="Nirmala UI" Foreground="#424242" MaxLength="100" PreviewKeyDown="TxtTitle_PreviewKeyDown"/>
+			<TextBlock x:Name="ErrorTitle" FontSize="16" Foreground="Red" Visibility="Collapsed"/>
+		</StackPanel>
+		<StackPanel Grid.Row="2" Grid.Column="0" Margin="10 0">
+			<TextBlock Text="Status" FontSize="20" FontFamily="Nirmala UI" Foreground="#212121"/>
+			<ComboBox x:Name="ComboStatus" IsDropDownOpen="False" Foreground="#424242" FontFamily="Nirmala UI" FontSize="18" SelectionChanged="ComboStatus_SelectionChanged"/>
+			<TextBlock x:Name="ErrorStatus" FontSize="16" Foreground="Red" Visibility="Collapsed"/>
+		</StackPanel>
+		<StackPanel Grid.Row="2" Grid.Column="1" Margin="10 0">
+			<TextBlock Text="Priority" FontSize="20" FontFamily="Nirmala UI" Foreground="#212121"/>
+			<ComboBox x:Name="ComboPriority"  IsDropDownOpen="False" Foreground="#424242" FontFamily="Nirmala UI" FontSize="18" SelectionChanged="ComboPriority_SelectionChanged"/>
+			<TextBlock x:Name="ErrorPriority" FontSize="16" Foreground="Red" Visibility="Collapsed"/>
+		</StackPanel>
+		<StackPanel Grid.Row="3" Grid.Column="0" Margin="15 10 15 10">
+			<TextBlock Text="Start At" FontSize="20" FontFamily="Nirmala UI" Foreground="#212121"/>
+			<DatePicker x:Name="DateStart" Padding="2" FontSize="18" FontFamily="Nirmala UI" Foreground="#424242" SelectedDateFormat="Long" GotFocus="DateStart_GotFocus"/>
+			<TextBlock x:Name="ErrorStart" FontSize="16" Foreground="Red" Visibility="Collapsed"/>
+		</StackPanel>
+		<StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="15 10 15 10">
+			<TextBlock Text="End At" FontSize="20" FontFamily="Nirmala UI" Foreground="#212121"/>
+			<DatePicker x:Name="DateEnd" Padding="2" FontSize="18" FontFamily="Nirmala UI" Foreground="#424242" SelectedDateFormat="Long" GotFocus="DateEnd_GotFocus"/>
+			<TextBlock x:Name="ErrorEnd" FontSize="16" Foreground="Red" Visibility="Collapsed"/>
+		</StackPanel>
+		<StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="15 10 15 10">
+			<TextBlock Text="Description" FontSize="20" FontFamily="Nirmala UI" Foreground="#212121"/>
+			<TextBox x:Name="TxtDescription" Padding="2 2 2 0" FontSize="18" FontFamily="Nirmala UI" Foreground="#424242" Height="125" TextWrapping="Wrap" AcceptsTab="True" Cursor="IBeam" VerticalScrollBarVisibility="Auto" PreviewKeyDown="TxtDescription_PreviewKeyDown"/>
+		</StackPanel>
+		<Button x:Name="BtnCancelTask" Content="Cancel" FontSize="18" FontFamily="Nirmala UI" FontWeight="DemiBold" Grid.Row="5" Grid.Column="0" Width="250" Height="45" Background="#795548" BorderBrush="#795548" Click="BtnCancelTask_Click"/>
+		<Button x:Name="BtnEditTask" Content="Edit" FontSize="18" FontFamily="Nirmala UI" FontWeight="DemiBold" Grid.Row="5" Grid.Column="1" Width="250" Height="45" Background="#37474F" BorderBrush="#37474F" Click="BtnEditTask_Click"/>
+	</Grid>
 </UserControl>

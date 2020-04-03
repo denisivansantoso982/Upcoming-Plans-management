@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
 using MindMap.Models;
-using System.Text.RegularExpressions;
 
 namespace MindMap.Data
 {
@@ -131,7 +130,7 @@ namespace MindMap.Data
         }
         #endregion
 
-        #region Button Action
+        #region Button and Other Action
         private void BtnAddTask_Click(object sender, RoutedEventArgs e)
         {
             int cmbs = ComboStatus.SelectedIndex;
@@ -199,6 +198,14 @@ namespace MindMap.Data
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        private void TxtDescription_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if ( e.Key == Key.Enter )
+            {
+                BtnAddTask_Click(sender, e);
             }
         }
         #endregion

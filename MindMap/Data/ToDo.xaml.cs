@@ -72,6 +72,20 @@ namespace MindMap.Data
             var Id = rowId["id_task"];
 
             DataTask.Id_Task = Convert.ToInt32(Id);
+
+            Window window = new Window
+            {
+                Title = "Edit Task",
+                Content = new DetailTask(),
+                WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                WindowState = WindowState.Normal,
+                WindowStyle = WindowStyle.ThreeDBorderWindow,
+                Icon = new BitmapImage(new Uri(@"E:\MyProject\Desktop_Project\C#\Upcoming Plans management\MindMap\Images\MyIcon.png", UriKind.Relative)),
+                Width = 900,
+                Height = 600
+            };
+
+            window.ShowDialog();
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
@@ -80,6 +94,20 @@ namespace MindMap.Data
             var Id = rowId["id_task"];
 
             DataTask.Id_Task = Convert.ToInt32(Id);
+
+            Window window = new Window
+            {
+                Title = "Edit Task",
+                Content = new UpdateTask(),
+                WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                WindowState = WindowState.Normal,
+                WindowStyle = WindowStyle.ThreeDBorderWindow,
+                Icon = new BitmapImage(new Uri(@"E:\MyProject\Desktop_Project\C#\Upcoming Plans management\MindMap\Images\MyIcon.png", UriKind.Relative)),
+                Width = 900,
+                Height = 600
+            };
+
+            window.ShowDialog();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)

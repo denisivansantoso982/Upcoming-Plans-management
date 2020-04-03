@@ -251,9 +251,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\MyIcon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Images\MyIcon.png" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

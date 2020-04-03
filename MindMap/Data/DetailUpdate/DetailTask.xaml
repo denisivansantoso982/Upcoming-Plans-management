@@ -4,9 +4,68 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MindMap.Data.DetailUpdate"
+			 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="525" d:DesignWidth="800">
+	<UserControl.Resources>
+		<Style x:Key="TextNotice" TargetType="{x:Type TextBlock}">
+			<Setter Property="FontSize" Value="20"/>
+			<Setter Property="FontFamily" Value="Segoe UI"/>
+			<Setter Property="Foreground" Value="#545454"/>
+			<Setter Property="FontWeight" Value="DemiBold"/>
+		</Style>
+	</UserControl.Resources>
+    <Grid Background="White">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="auto"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+
+		<StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0 5">
+			<TextBlock Text="Detail Task" FontSize="24" FontFamily="Nirmala UI" Foreground="DarkSlateGray" FontWeight="DemiBold"/>
+		</StackPanel>
+		<StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="30 10">
+			<TextBlock Text="Title" Style="{StaticResource TextNotice}"/>
+			<TextBox x:Name="TextTitle" Text="Latihan" FontSize="16" FontFamily="Segoe UI" Foreground="#545454" Margin="15 5" IsReadOnly="True"/>
+		</StackPanel>
+		<StackPanel Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" Margin="35 10">
+			<TextBlock Text="Status" Style="{StaticResource TextNotice}"/>
+			<TextBox x:Name="TextStatus" Text="Status" FontSize="16" FontFamily="Segoe UI" Foreground="#545454" Margin="15 5" IsReadOnly="True"/>
+		</StackPanel>
+		<StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Margin="35 10">
+			<TextBlock Text="Priority" Style="{StaticResource TextNotice}"/>
+			<TextBox x:Name="TextPriority" FontSize="16" FontFamily="Segoe UI" Foreground="#545454" Margin="15 5" IsReadOnly="True"/>
+		</StackPanel>
+		<StackPanel Grid.Row="3" Grid.Column="0" HorizontalAlignment="Stretch" Margin="35 10">
+			<TextBlock Text="Start Date" Style="{StaticResource TextNotice}"/>
+			<TextBox x:Name="TextStartDate" Text="Start" FontSize="16" FontFamily="Segoe UI" Foreground="#545454" Margin="15 5" IsReadOnly="True"/>
+		</StackPanel>
+		<StackPanel Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" Margin="35 10">
+			<TextBlock Text="End Date" Style="{StaticResource TextNotice}"/>
+			<TextBox x:Name="TextEndDate" Text="End" FontSize="16" FontFamily="Segoe UI" Foreground="#545454" Margin="15 5" IsReadOnly="True"/>
+		</StackPanel>
+		<StackPanel Grid.Row="4" Grid.Column="0" HorizontalAlignment="Stretch" Margin="35 10">
+			<TextBlock Text="Created At" Style="{StaticResource TextNotice}"/>
+			<TextBox x:Name="TextCreated" Text="Created At" FontSize="16" FontFamily="Segoe UI" Foreground="#545454" Margin="15 5" IsReadOnly="True"/>
+		</StackPanel>
+		<StackPanel Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" Margin="35 10">
+			<TextBlock Text="Last Update" Style="{StaticResource TextNotice}"/>
+			<TextBox x:Name="TextLastUpdate" Text="Last Update" FontSize="16" FontFamily="Segoe UI" Foreground="#545454" Margin="15 5" IsReadOnly="True"/>
+		</StackPanel>
+		<StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="30 10">
+			<TextBlock Text="Description" Style="{StaticResource TextNotice}"/>
+			<TextBox x:Name="TextDescription" Text="Description" HorizontalAlignment="Stretch" Height="80" TextWrapping="Wrap" FontSize="16" FontFamily="Segoe UI" Foreground="#545454" Margin="15 5" IsReadOnly="True"/>
+		</StackPanel>
+		<TextBlock x:Name="TextDeadline" Text="Deadline" Grid.Row="6" Grid.Column="0" Foreground="DimGray" FontSize="14" Margin="5" HorizontalAlignment="Right"/>
+
+	</Grid>
 </UserControl>

@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MindMap.Models;
+using MindMap.Data.DetailUpdate;
 
 namespace MindMap.Data
 {
@@ -23,28 +24,24 @@ namespace MindMap.Data
     /// </summary>
     public partial class HomeSearch : UserControl
     {
-        private string valueSearch = "";
         private string dataSource = "Data Source=DENISIVANSANTOS;Initial Catalog=mind_map;Integrated Security=True";
 
         public HomeSearch()
         {
             InitializeComponent();
-            LoadData(valueSearch);
+            LoadData();
         }
 
         #region Methods
-        private void LoadData(string valueSearch)
+        private void LoadData()
         {
-            string value = valueSearch;
             try
             {
                 using ( SqlConnection connect = new SqlConnection(dataSource) )
                 {
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM users INNER JOIN task ON users.id_user = task.users INNER JOIN status ON task.status = status.id_status INNER JOIN priority ON task.priority = priority.id_priority WHERE id_user=" + DataUser.Id_user + " AND title LIKE '%" + value + "%'", connect);
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM users INNER JOIN task ON users.id_user = task.users INNER JOIN status ON task.status = status.id_status INNER JOIN priority ON task.priority = priority.id_priority WHERE id_user=" + DataUser.Id_user + " AND title LIKE '%" + TxtSearch.Text + "%'", connect);
                     SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                    DataSet ds = new DataSet();
                     DataTable dt = new DataTable();
-                    ds.Clear();
                     sda.Fill(dt);
 
                     dataGridRecords.ItemsSource = dt.DefaultView;
@@ -60,24 +57,23 @@ namespace MindMap.Data
         }
         #endregion
 
+        #region Search Action
         private void TxtSearch_KeyDown(object sender, KeyEventArgs e)
         {
-            if ( e.Key == Key.Back && e.Key == Key.Delete )
+            if ( e.Key == Key.Back || e.Key == Key.Delete )
             {
-                valueSearch = TxtSearch.Text;
-                LoadData(valueSearch);
+                LoadData();
             }
             else if ( e.Key == Key.Enter )
             {
-                valueSearch = TxtSearch.Text;
-                LoadData(valueSearch);
+                LoadData();
             }
             else
             {
-                valueSearch = TxtSearch.Text;
-                LoadData(valueSearch);
+                LoadData();
             }
         }
+        #endregion
 
         #region Button in Popup
         private void BtnDetail_Click(object sender, RoutedEventArgs e)
@@ -86,6 +82,19 @@ namespace MindMap.Data
             var Id = rowId["id_task"];
 
             DataTask.Id_Task = Convert.ToInt32(Id);
+
+            Window window = new Window
+            {
+                Title = "Detail Task",
+                Content = new DetailTask(),
+                WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                WindowState = WindowState.Normal,
+                WindowStyle = WindowStyle.ThreeDBorderWindow,
+                Icon = new BitmapImage(new Uri(@"E:\MyProject\Desktop_Project\C#\Upcoming Plans management\MindMap\Images\MyIcon.png", UriKind.Relative)),
+                Height = 600
+            };
+
+            window.ShowDialog();
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
@@ -94,6 +103,20 @@ namespace MindMap.Data
             var Id = rowId["id_task"];
 
             DataTask.Id_Task = Convert.ToInt32(Id);
+
+            Window window = new Window
+            {
+                Title = "Edit Task",
+                Content = new UpdateTask(),
+                WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                WindowState = WindowState.Normal,
+                WindowStyle = WindowStyle.ThreeDBorderWindow,
+                Icon = new BitmapImage(new Uri(@"E:\MyProject\Desktop_Project\C#\Upcoming Plans management\MindMap\Images\MyIcon.png", UriKind.Relative)),
+                Width = 900,
+                Height = 600
+            };
+
+            window.ShowDialog();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
@@ -110,8 +133,7 @@ namespace MindMap.Data
             cmd.ExecuteNonQuery();
             connect.Close();
 
-            valueSearch = TxtSearch.Text;
-            LoadData(valueSearch);
+            LoadData();
         }
         #endregion
     }

@@ -16,8 +16,6 @@ namespace MindMap.Form
         SqlConnection connect = new SqlConnection();
         string dataSource = "Data Source=DENISIVANSANTOS;Initial Catalog=mind_map;Integrated Security=True";
         Dashboard dashboard = new Dashboard();
-        //private Preferences userStorage = new Preferences.UserAuth;
-
 
         public LoginForm()
         {

@@ -50,7 +50,7 @@
 		</StackPanel>
 		<StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="15 10 15 10">
 			<TextBlock Text="Description" FontSize="20" FontFamily="Nirmala UI" Foreground="#212121"/>
-			<TextBox x:Name="TxtDescription" Padding="2 2 2 0" FontSize="18" FontFamily="Nirmala UI" Foreground="#424242" Height="125" TextWrapping="Wrap" AcceptsTab="True" Cursor="IBeam" VerticalScrollBarVisibility="Auto"/>
+			<TextBox x:Name="TxtDescription" Padding="2 2 2 0" FontSize="18" FontFamily="Nirmala UI" Foreground="#424242" Height="125" TextWrapping="Wrap" AcceptsTab="True" Cursor="IBeam" VerticalScrollBarVisibility="Auto" PreviewKeyDown="TxtDescription_PreviewKeyDown"/>
 		</StackPanel>
 		<Button x:Name="BtnAddTask" Content="Create" FontSize="18" FontFamily="Nirmala UI" FontWeight="DemiBold" Grid.Row="5" Grid.Column="1" Width="250" Height="45" Background="#37474F" BorderBrush="#37474F" Click="BtnAddTask_Click"/>
 	</Grid>

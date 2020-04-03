@@ -108,6 +108,22 @@
 							</StackPanel>
 						</Button>
 					</ListViewItem>
+					<ListViewItem Height="70" Padding="0" Visibility="Collapsed">
+						<Button x:Name="BtnDetailTask" Background="{x:Null}" Padding="0" BorderBrush="{x:Null}" Height="60" Click="BtnDetailTask_Click">
+							<StackPanel Orientation="Horizontal">
+								<materialDesign:PackIcon Foreground="White" Kind="InfoCircle" Width="35" Height="35" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Left"/>
+								<TextBlock Text="Detail Task" Width="155" VerticalAlignment="Center" FontFamily="Nirmala UI" Margin="20 10" Foreground="White" FontSize="18"/>
+							</StackPanel>
+						</Button>
+					</ListViewItem>
+					<ListViewItem Height="70" Padding="0" Visibility="Collapsed">
+						<Button x:Name="BtnUpdateTask" Background="{x:Null}" Padding="0" BorderBrush="{x:Null}" Height="60" Click="BtnUpdateTask_Click">
+							<StackPanel Orientation="Horizontal">
+								<materialDesign:PackIcon Foreground="White" Kind="Edit" Width="35" Height="35" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Left"/>
+								<TextBlock Text="Edit Task" Width="155" VerticalAlignment="Center" FontFamily="Nirmala UI" Margin="20 10" Foreground="White" FontSize="18"/>
+							</StackPanel>
+						</Button>
+					</ListViewItem>
 				</ListView>
 			</StackPanel>
 		</Grid>

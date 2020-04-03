@@ -27,8 +27,8 @@ namespace MindMap.Models
         public static int Status { get => DataStatus.Id_Status; }
         public static int Users { get => DataUser.Id_user; }
         public static string Description { get; set; }
-        public static DateTime Last_Update { get; set; }
         public static int Priority { get => DataPriority.Id_Priority; }
+        public static DateTime Last_Update { get; set; }
     }
 
     public class DataStatus 

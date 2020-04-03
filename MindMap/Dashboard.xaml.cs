@@ -15,6 +15,7 @@ using System.Windows.Controls.Primitives;
 using MindMap.Dialog;
 using MindMap.Data;
 using MindMap.Models;
+using MindMap.Data.DetailUpdate;
 
 namespace MindMap
 {
@@ -23,6 +24,9 @@ namespace MindMap
     /// </summary>
     public partial class Dashboard : Window
     {
+        public event RoutedEventHandler DetailAction;
+        public event RoutedEventHandler UpdateAction;
+
         public Dashboard()
         {
             InitializeComponent();
@@ -65,6 +69,17 @@ namespace MindMap
         {
             Content.Child = new HomeCreateTask();
         }
+
+        public void BtnUpdateTask_Click(object sender, RoutedEventArgs e)
+        {
+            Content.Child = new UpdateTask();
+        }
+
+        public void BtnDetailTask_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.DetailAction != null )
+                Content.Child = new DetailTask();
+        }
         #endregion
 
         #region Button in Popup Action
@@ -96,6 +111,5 @@ namespace MindMap
            
         }
         #endregion
-
     }
 }
