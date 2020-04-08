@@ -53,7 +53,6 @@ namespace MindMap.Form
                     MessageBox.Show("Login Failed!", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                     TxtUsername.Focus();
                 }
-                TxtUsername.Text = "";
                 TxtPassword.Password = "";
 
                 connect.Close();

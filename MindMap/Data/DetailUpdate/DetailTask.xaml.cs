@@ -53,6 +53,7 @@ namespace MindMap.Data.DetailUpdate
                     TextStartDate.Text = start.ToString("dddd, MMMM dd yyyy");
                     TextEndDate.Text = end.ToString("dddd, MMMM dd yyyy");
                     TextCreated.Text = created.ToString("dddd, MMMM dd yyyy H:mm tt");
+                    int status = reader.GetFieldValue<int>(reader.GetOrdinal("id_status"));
 
                     if ( reader["description"] == DBNull.Value )
                     {
@@ -71,6 +72,7 @@ namespace MindMap.Data.DetailUpdate
                         DateTime updates = reader.GetFieldValue<DateTime>(reader.GetOrdinal("last_update"));
                         TextLastUpdate.Text = updates.ToString("dddd, MMMM dd yyyy H:mm tt");
                     }
+
                     if ( today < end )
                     {
                         string due = dueDate.ToString();
@@ -80,11 +82,17 @@ namespace MindMap.Data.DetailUpdate
                     {
                         TextDeadline.Text = "Due Today";
                     }
+                    else if ( today > end && status == 3 )
+                    {
+                        int calculate = dueDate * -1;
+                        string due = calculate.ToString();
+                        TextDeadline.Text = string.Concat("Finished ", due, " day(s) ago");
+                    }
                     else
                     {
                         int calculate = dueDate * -1;
                         string due = calculate.ToString();
-                        TextDeadline.Text = string.Concat("Late ", due, " day(s)");
+                        TextDeadline.Text = string.Concat("Late ", due, " day(s) ago");
                     }
                 }
 

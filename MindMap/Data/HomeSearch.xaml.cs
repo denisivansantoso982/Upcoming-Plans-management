@@ -29,6 +29,10 @@ namespace MindMap.Data
         public HomeSearch()
         {
             InitializeComponent();
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
             LoadData();
         }
 
@@ -117,6 +121,8 @@ namespace MindMap.Data
             };
 
             window.ShowDialog();
+
+            this.LoadData();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)

@@ -24,5 +24,14 @@ namespace MindMap.Data
         {
             InitializeComponent();
         }
+
+        private void Tab_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //if ( Todo.IsSelected )
+            //{
+            //    ToDo toDo = new ToDo();
+            //    toDo.
+            //}
+        }
     }
 }

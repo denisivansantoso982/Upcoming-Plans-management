@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="1250">
 	<Grid>
-		<TabControl>
+		<TabControl x:Name="Tab" SelectionChanged="Tab_SelectionChanged">
 			<TabControl.Resources>
 				<Style TargetType="{x:Type TabItem}">
 					<Setter Property="Width" Value="250"/>
@@ -39,13 +39,13 @@
 					</Setter>
 				</Style>
 			</TabControl.Resources>
-			<TabItem  Header="To Do" Background="#DDDDDD">
+			<TabItem x:Name="Todo" Header="To Do" Background="#DDDDDD">
 				<local:ToDo/>
 			</TabItem>
-			<TabItem Header="In Progress" Background="#DDDDDD">
+			<TabItem x:Name="InProgress" Header="In Progress" Background="#DDDDDD">
 				<local:InProgress/>
 			</TabItem>
-			<TabItem Header="Done" Background="#DDDDDD">
+			<TabItem x:Name="Done" Header="Done" Background="#DDDDDD">
 				<local:Done/>
 			</TabItem>
 		</TabControl>

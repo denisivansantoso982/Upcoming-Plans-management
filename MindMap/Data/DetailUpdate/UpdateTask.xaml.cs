@@ -255,7 +255,7 @@ namespace MindMap.Data.DetailUpdate
             }
         }
 
-        private void BtnCancelTask_Click(object sender, RoutedEventArgs e)
+        private void BtnResetTask_Click(object sender, RoutedEventArgs e)
         {
             ResetForm();
         }

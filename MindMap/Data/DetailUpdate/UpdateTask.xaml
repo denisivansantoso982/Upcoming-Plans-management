@@ -52,7 +52,7 @@
 			<TextBlock Text="Description" FontSize="20" FontFamily="Nirmala UI" Foreground="#212121"/>
 			<TextBox x:Name="TxtDescription" Padding="2 2 2 0" FontSize="18" FontFamily="Nirmala UI" Foreground="#424242" Height="125" TextWrapping="Wrap" AcceptsTab="True" Cursor="IBeam" VerticalScrollBarVisibility="Auto" PreviewKeyDown="TxtDescription_PreviewKeyDown"/>
 		</StackPanel>
-		<Button x:Name="BtnCancelTask" Content="Cancel" FontSize="18" FontFamily="Nirmala UI" FontWeight="DemiBold" Grid.Row="5" Grid.Column="0" Width="250" Height="45" Background="#795548" BorderBrush="#795548" Click="BtnCancelTask_Click"/>
+		<Button x:Name="BtnResetTask" Content="Reset" FontSize="18" FontFamily="Nirmala UI" FontWeight="DemiBold" Grid.Row="5" Grid.Column="0" Width="250" Height="45" Background="#795548" BorderBrush="#795548" Click="BtnResetTask_Click"/>
 		<Button x:Name="BtnEditTask" Content="Edit" FontSize="18" FontFamily="Nirmala UI" FontWeight="DemiBold" Grid.Row="5" Grid.Column="1" Width="250" Height="45" Background="#37474F" BorderBrush="#37474F" Click="BtnEditTask_Click"/>
 	</Grid>
 </UserControl>
