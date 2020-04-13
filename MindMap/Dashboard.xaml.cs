@@ -24,12 +24,10 @@ namespace MindMap
     /// </summary>
     public partial class Dashboard : Window
     {
-        public event RoutedEventHandler DetailAction;
-        public event RoutedEventHandler UpdateAction;
-
         public Dashboard()
         {
             InitializeComponent();
+            Content.Child = new HomeDashboard();
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -68,17 +66,6 @@ namespace MindMap
         private void BtnAddTask_Click(object sender, RoutedEventArgs e)
         {
             Content.Child = new HomeCreateTask();
-        }
-
-        public void BtnUpdateTask_Click(object sender, RoutedEventArgs e)
-        {
-            Content.Child = new UpdateTask();
-        }
-
-        public void BtnDetailTask_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.DetailAction != null )
-                Content.Child = new DetailTask();
         }
         #endregion
 

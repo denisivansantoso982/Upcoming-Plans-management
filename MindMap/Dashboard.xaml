@@ -114,9 +114,7 @@
 		<!--#endregion-->
 		
 		<!--#region Content-->
-		<Border x:Name="Content" Background="#D4D4D4" Grid.Column="1" Grid.Row="1">
-			<data:HomeDashboard/>
-		</Border>
+		<Border x:Name="Content" Background="#D4D4D4" Grid.Column="1" Grid.Row="1"/>
 		<!--#endregion-->
 
 	</Grid>

@@ -4,9 +4,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MindMap.Data"
+			 xmlns:chart="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+	<Grid Background="White">
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition Height="auto"/>
+		</Grid.RowDefinitions>
+		
+		<chart:CartesianChart Series="{Binding SeriesCollection}" Background="White" Grid.Row="0">
+			<chart:CartesianChart.AxisX>
+				<chart:Axis Title="Status" Labels="{Binding Labels}" FontWeight="DemiBold" FontSize="16"/>
+			</chart:CartesianChart.AxisX>
+			<chart:CartesianChart.AxisY>
+				<chart:Axis Title="Count" LabelFormatter="{Binding Formatter}" FontSize="14"/>
+			</chart:CartesianChart.AxisY>
+		</chart:CartesianChart>
+
+		<TextBlock x:Name="DataCount" Grid.Row="1" FontSize="14" FontFamily="Nirmala UI" Foreground="DimGray" HorizontalAlignment="Center"/>
+	</Grid>
 </UserControl>
