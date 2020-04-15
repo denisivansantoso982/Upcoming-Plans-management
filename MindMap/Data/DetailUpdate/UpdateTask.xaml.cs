@@ -198,7 +198,7 @@ namespace MindMap.Data.DetailUpdate
                     SqlConnection connect = new SqlConnection(datasource);
                     connect.Open();
 
-                    SqlCommand cmd = new SqlCommand("UPDATE task SET title=@title, status=@status, start_at=@start_at, end_at=@end_at, description=@description, priority=@priority WHERE id_task=@id_task", connect);
+                    SqlCommand cmd = new SqlCommand("UPDATE task SET title=@title, status=@status, start_at=@start_at, end_at=@end_at, description=@description, priority=@priority, last_update=@last_update WHERE id_task=@id_task", connect);
                     cmd.CommandType = CommandType.Text;
                     if ( string.IsNullOrEmpty(TxtTitle.Text) )
                     {
@@ -236,6 +236,7 @@ namespace MindMap.Data.DetailUpdate
                     }
                     else
                         cmd.Parameters.AddWithValue("@priority", SqlDbType.Int).Value = resultPriority;
+                    cmd.Parameters.AddWithValue("@last_update", DateTime.Now);
                     cmd.Parameters.AddWithValue("@id_task", DataTask.Id_Task);
 
                     cmd.ExecuteNonQuery();

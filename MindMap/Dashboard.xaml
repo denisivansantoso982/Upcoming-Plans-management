@@ -54,9 +54,6 @@
 			<StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
 				<materialDesign:PopupBox Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="#fff">
 					<StackPanel Width="150">
-						<Button x:Name="BtnHelp" Content="Help" Click="BtnHelp_Click"/>
-						<Button x:Name="BtnAbout" Content="About" Click="BtnAbout_Click"/>
-						<Separator/>
 						<Button x:Name="BtnLogout" Content="Logout" Click="BtnLogout_Click"/>
 					</StackPanel>
 				</materialDesign:PopupBox>

@@ -7,51 +7,119 @@
 			 xmlns:chart="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
-	<Grid Background="White">
+	<Grid Background="White" >
 		<Grid.RowDefinitions>
 			<RowDefinition/>
-			<RowDefinition Height="auto"/>
+			<RowDefinition/>
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
 
-		<Grid Grid.Row="0" Grid.Column="0" Margin="5" Height="400">
-			<Grid.Effect>
-				<DropShadowEffect Opacity="0.2" RenderingBias="Performance"/>
-			</Grid.Effect>
-			<Grid.RowDefinitions>
-				<RowDefinition Height="auto"/>
-				<RowDefinition/>
-				<RowDefinition Height="auto"/>
-			</Grid.RowDefinitions>
+		<StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Margin="5" Background="#795548">
+			<StackPanel.Effect>
+				<DropShadowEffect Opacity="0.3" ShadowDepth="10" RenderingBias="Performance" BlurRadius="7" />
+			</StackPanel.Effect>
+			<TextBlock Text="Next Deadline" HorizontalAlignment="Center" Margin="0 2 0 4" Foreground="White" FontSize="16" FontWeight="DemiBold"/>
+			<DataGrid x:Name="dataGridDue" Margin="5" SelectionMode="Single" HorizontalAlignment="Left" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Auto" AutoGenerateColumns="False" CanUserAddRows="False" MaxHeight="260" IsReadOnly="True">
+				<DataGrid.Background>
+					<LinearGradientBrush>
+						<GradientStop Color="White" Offset="0"/>
+					</LinearGradientBrush>
+				</DataGrid.Background>
+				<DataGrid.CellStyle>
+					<Style TargetType="{x:Type DataGridCell}">
+						<Setter Property="BorderThickness" Value="0"/>
+						<Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+						<Setter Property="Background" Value="#FFFFFF"/>
+						<Setter Property="FontWeight" Value="DemiBold"/>
+						<Setter Property="Height" Value="60"/>
+						<Setter Property="Template">
+							<Setter.Value>
+								<ControlTemplate TargetType="{x:Type DataGridCell}">
+									<Grid Background="{TemplateBinding Background}">
+										<ContentPresenter VerticalAlignment="Center"/>
+									</Grid>
+								</ControlTemplate>
+							</Setter.Value>
+						</Setter>
+						<Style.Triggers>
+							<Trigger Property="IsSelected" Value="True">
+								<Setter Property="Background" Value="#E0E0E0"/>
+								<Setter Property="Foreground" Value="#212121"/>
+							</Trigger>
+						</Style.Triggers>
+					</Style>
+				</DataGrid.CellStyle>
+				<DataGrid.RowStyle>
+					<Style TargetType="{x:Type DataGridRow}">
+						<Setter Property="Height" Value="60"/>
+						<Setter Property="VerticalContentAlignment" Value="Center"/>
+						<Setter Property="VerticalAlignment" Value="Center"/>
+						<Style.Triggers>
+							<Trigger Property="IsSelected" Value="True">
+								<Setter Property="BorderBrush" Value="#E0E0E0"/>
+								<Setter Property="BorderThickness" Value="0"/>
+							</Trigger>
+						</Style.Triggers>
+					</Style>
+				</DataGrid.RowStyle>
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Title" Width="*" Binding="{Binding title}"/>
+					<DataGridTextColumn Header="Next Deadline" MinWidth="100" Width="*" Binding="{Binding end_at, StringFormat=\{0:dddd dd MMMM\}}"/>
+				</DataGrid.Columns>
+			</DataGrid>
+		</StackPanel>
 
-			<TextBlock Text="Status" Grid.Row="0" Margin="0 0 0 5" FontSize="18" FontWeight="DemiBold" Foreground="DimGray" HorizontalAlignment="Center"/>
-			<chart:CartesianChart Series="{Binding SeriesColumn}" Background="White" Grid.Row="1">
-				<chart:CartesianChart.AxisX>
-					<chart:Axis Title="Status" Labels="{Binding Labels}" FontWeight="DemiBold" FontSize="14"/>
-				</chart:CartesianChart.AxisX>
-				<chart:CartesianChart.AxisY>
-					<chart:Axis Title="Count" LabelFormatter="{Binding Formatter}" FontSize="14"/>
-				</chart:CartesianChart.AxisY>
-			</chart:CartesianChart>
-			<TextBlock x:Name="DataCount" Grid.Row="2" FontSize="14" FontFamily="Nirmala UI" Foreground="DarkSlateGray" HorizontalAlignment="Center"/>
-		</Grid>
+		<Calendar Grid.Row="0" Grid.Column="1" Margin="5" HorizontalAlignment="Center">
+			<Calendar.Effect>
+				<DropShadowEffect Opacity="0.5" ShadowDepth="10" BlurRadius="5"/>
+			</Calendar.Effect>
+		</Calendar>
 
-		<Grid Grid.Row="0" Grid.Column="1" Margin="5" Height="400">
-			<Grid.Effect>
-				<DropShadowEffect Opacity="0.2" RenderingBias="Performance"/>
-			</Grid.Effect>
-			<Grid.RowDefinitions>
-				<RowDefinition Height="auto"/>
-				<RowDefinition/>
-				<RowDefinition Height="auto"/>
-			</Grid.RowDefinitions>
+		<Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0 5 0 0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
 
-			<TextBlock Text="Priority" Grid.Row="0" Margin="0 0 0 5" FontSize="18" FontWeight="DemiBold" Foreground="DimGray" HorizontalAlignment="Center" Grid.Column="1"/>
-			<chart:PieChart Series="{Binding SeriesPie}" Grid.Row="1" LegendLocation="Bottom" DataClick="Chart_OnDataClick" Hoverable="True" Grid.ColumnSpan="2"/>
-			<TextBlock x:Name="DataTotal" Grid.Row="2" FontSize="14" FontFamily="Nirmala UI" Foreground="DarkSlateGray" HorizontalAlignment="Center" Grid.Column="1"/>
+			<Grid Grid.Column="0" Margin="5">
+				<Grid.Effect>
+					<DropShadowEffect Opacity="0.2" RenderingBias="Performance" Direction="315" ShadowDepth="4" BlurRadius="7"/>
+				</Grid.Effect>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="auto"/>
+					<RowDefinition/>
+					<RowDefinition Height="auto"/>
+				</Grid.RowDefinitions>
+
+				<TextBlock Text="Status" Grid.Row="0" Margin="0 0 0 5" FontSize="18" FontWeight="DemiBold" Foreground="DimGray" HorizontalAlignment="Center"/>
+				<chart:CartesianChart Series="{Binding SeriesColumn}" Background="White" Grid.Row="1">
+					<chart:CartesianChart.AxisX>
+						<chart:Axis Title="Status" Labels="{Binding Labels}" FontWeight="DemiBold" FontSize="14"/>
+					</chart:CartesianChart.AxisX>
+					<chart:CartesianChart.AxisY>
+						<chart:Axis Title="Count" LabelFormatter="{Binding Formatter}" FontSize="14"/>
+					</chart:CartesianChart.AxisY>
+				</chart:CartesianChart>
+				<TextBlock x:Name="DataCount" Grid.Row="2" FontSize="14" FontFamily="Nirmala UI" Foreground="DarkSlateGray" HorizontalAlignment="Center"/>
+			</Grid>
+
+			<Grid Grid.Column="1" Margin="5">
+				<Grid.Effect>
+					<DropShadowEffect Opacity="0.35" RenderingBias="Performance" Direction="315" ShadowDepth="2" BlurRadius="2"/>
+				</Grid.Effect>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="auto"/>
+					<RowDefinition/>
+					<RowDefinition Height="auto"/>
+				</Grid.RowDefinitions>
+
+				<TextBlock Text="Priority" Grid.Row="0" Margin="0 0 0 5" FontSize="18" FontWeight="DemiBold" Foreground="DimGray" HorizontalAlignment="Center" Grid.Column="1"/>
+				<chart:PieChart Series="{Binding SeriesPie}" Grid.Row="1" LegendLocation="Right" DataClick="Chart_OnDataClick" Hoverable="True" Grid.ColumnSpan="2"/>
+				<TextBlock x:Name="DataTotal" Grid.Row="2" FontSize="14" FontFamily="Nirmala UI" Foreground="DarkSlateGray" HorizontalAlignment="Center" Grid.Column="1"/>
+			</Grid>
 		</Grid>
 
 	</Grid>

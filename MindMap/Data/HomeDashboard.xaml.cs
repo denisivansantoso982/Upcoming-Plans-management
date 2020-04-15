@@ -38,6 +38,7 @@ namespace MindMap.Data
         {
             LoadChartdata();
             TotalData();
+            ListViewDue();
         }
 
         #region Methods
@@ -168,6 +169,26 @@ namespace MindMap.Data
 
             var selectedSeries = (PieSeries) chartpoint.SeriesView;
             selectedSeries.PushOut = 8;
+        }
+
+        private void ListViewDue()
+        {
+            try
+            {
+                using ( SqlConnection connect = new SqlConnection(dataSource) )
+                {
+                    SqlCommand cmd = new SqlCommand("SELECT title, end_at FROM task WHERE GETDATE() < end_at ORDER BY end_at ASC", connect);
+                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    sda.Fill(dt);
+
+                    dataGridDue.ItemsSource = dt.DefaultView;
+                }
+            }
+            catch ( Exception ex )
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         #endregion
 

@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
-using MindMap.Dialog;
 using MindMap.Data;
 using MindMap.Models;
 using MindMap.Data.DetailUpdate;
@@ -77,26 +76,39 @@ namespace MindMap
             this.Hide();
         }
 
-        private void BtnHelp_Click(object sender, RoutedEventArgs e)
-        {
-            DialogTemplate template = new DialogTemplate
-            {
-                Content = new Help()
-            };
+        //private void BtnHelp_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Window window = new Window 
+        //    {
+        //        Title = "Help",
+        //        Content = new Help(),
+        //        WindowStartupLocation = WindowStartupLocation.CenterScreen,
+        //        WindowState = WindowState.Normal,
+        //        WindowStyle = WindowStyle.ThreeDBorderWindow,
+        //        Icon = new BitmapImage(new Uri(@"E:\MyProject\Desktop_Project\C#\Upcoming Plans management\MindMap\Images\MyIcon.png", UriKind.Relative)),
+        //        Width = 650,
+        //        Height = 400
+        //    };
 
-            template.ShowDialog();
-        }
+        //    window.ShowDialog();
+        //}
 
-        private void BtnAbout_Click(object sender, RoutedEventArgs e)
-        {
-            DialogTemplate template = new DialogTemplate
-            {
-                Content = new About()
-            };
+        //private void BtnAbout_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Window window = new Window
+        //    {
+        //        Title = "About",
+        //        Content = new About(),
+        //        WindowStartupLocation = WindowStartupLocation.CenterScreen,
+        //        WindowState = WindowState.Normal,
+        //        WindowStyle = WindowStyle.ThreeDBorderWindow,
+        //        Icon = new BitmapImage(new Uri(@"E:\MyProject\Desktop_Project\C#\Upcoming Plans management\MindMap\Images\MyIcon.png", UriKind.Relative)),
+        //        Width = 650,
+        //        Height = 400
+        //    };
 
-            template.ShowDialog();
-           
-        }
+        //    window.ShowDialog();
+        //}
         #endregion
     }
 }
