@@ -247,7 +247,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\MyIcon.png" />
+    <Resource Include="Images\MyIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Logo.png" />

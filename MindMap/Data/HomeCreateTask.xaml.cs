@@ -81,6 +81,7 @@ namespace MindMap.Data
             {
                 ErrorTitle.Text = "Please Fill Title!";
                 ErrorTitle.Visibility = Visibility.Visible;
+                TxtTitle.BorderBrush = Brushes.Red;
                 TxtTitle.Focus();
                 return false;
             }

@@ -79,7 +79,7 @@ namespace MindMap.Data
 
             Window window = new Window
             {
-                Title = "Edit Task",
+                Title = "Detail Task",
                 Content = new DetailTask(),
                 WindowStartupLocation = WindowStartupLocation.CenterScreen,
                 WindowState = WindowState.Normal,
