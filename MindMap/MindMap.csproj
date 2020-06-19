@@ -133,9 +133,6 @@
     <Compile Include="Data\MainContent.xaml.cs">
       <DependentUpon>MainContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Data\SearchData.xaml.cs">
-      <DependentUpon>SearchData.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Data\ToDo.xaml.cs">
       <DependentUpon>ToDo.xaml</DependentUpon>
     </Compile>
@@ -222,10 +219,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Data\MainContent.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Data\SearchData.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
